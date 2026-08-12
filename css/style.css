@@ -835,12 +835,14 @@ blockquote.testimonial cite {
 }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
-.reveal {
+/* Only hide reveal content once we know JS is running. Without the .js gate,
+   a failed main.js would leave every revealable section invisible for good. */
+.js .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 400ms var(--ease), transform 400ms var(--ease);
 }
-.reveal.is-in { opacity: 1; transform: none; }
+.js .reveal.is-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
